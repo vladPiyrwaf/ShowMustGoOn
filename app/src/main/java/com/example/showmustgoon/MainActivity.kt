@@ -1,6 +1,7 @@
 package com.example.showmustgoon
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
@@ -17,27 +18,15 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             ShowMustGoOnTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
-                    Greeting("Android")а
+               TestingFun()
                 }
             }
         }
     }
-}
 
 @Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
+fun TestingFun(){
+    Log.d("someTag","TestFun works!!!")
 }
 
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    ShowMustGoOnTheme {
-        Greeting("Android")
-    }
-}
+
