@@ -26,7 +26,7 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun TestingFun(){
-    Log.d("someTag","TestFun works!!!")
+    Log.d("someTag","С наступающим!!!")
 }
 
 
