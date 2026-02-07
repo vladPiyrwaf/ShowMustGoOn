@@ -60,6 +60,11 @@ dependencies {
     debugImplementation(libs.androidx.ui.test.manifest)
     // Navigation
     implementation(libs.compose.navigation)
+    // DI
+    implementation(libs.dagger)
+    annotationProcessor(libs.daggerCompiler)
+    // Concurrency
+    implementation(libs.coroutines)
     // Unit tests
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

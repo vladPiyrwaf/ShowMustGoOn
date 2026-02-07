@@ -9,6 +9,8 @@ lifecycleRuntimeKtx = "2.6.1"
 activityCompose = "1.7.0"
 composeBom = "2023.08.00"
 composeNavgation = "2.9.7"
+dagger = "2.59.1"
+coroutines = "1.3.9"
 
 [libraries]
 # Android
@@ -28,7 +30,12 @@ androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-co
 androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
 androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 # Navigation
-compose-navigation = { group = "androidx.navigation", name = "navigation-compose", version.ref = "composeNavgation"}
+compose-navigation = { group = "androidx.navigation", name = "navigation-compose", version.ref = "composeNavgation" }
+# DI
+dagger = { group = "com.google.dagger", name = "dagger", version.ref = "dagger" }
+daggerCompiler = { group = "com.google.dagger", name = "dagger-compiler", version.ref = "dagger" }
+# Concurrency
+coroutines = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "coroutines" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
