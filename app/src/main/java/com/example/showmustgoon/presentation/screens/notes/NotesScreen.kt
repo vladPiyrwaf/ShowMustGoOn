@@ -13,8 +13,8 @@ fun NotesScreen(
     viewModel: NotesViewModel = viewModel(),
     onNoteClick1: (Note) -> Unit// плэйсхолдер для коллбэка который мы реализуем в навигации
 ) {
-    Scaffold(
-        modifier = modifier
+   // Scaffold(
+        //modifier = modifier
 
-        ) {}
+            //) {}
 }
