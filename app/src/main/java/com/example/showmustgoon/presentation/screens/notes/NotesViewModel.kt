@@ -1,46 +1,35 @@
 package com.example.showmustgoon.presentation.screens.notes
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.example.showmustgoon.data.NotesRepository
+import com.example.showmustgoon.domain.Note
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.update
+import javax.inject.Inject
 
-class NotesViewModel() : ViewModel() {
-    private val _state: MutableStateFlow<NotesScreenState> =
-        MutableStateFlow(NotesScreenState())
+@HiltViewModel
+class NotesViewModel @Inject constructor(
+    private val repository: NotesRepository) : ViewModel() {
+
+    private val _state = MutableStateFlow(NotesScreenState())
     val state = _state.asStateFlow()
 
-
-    fun processCommand(command: CreateNotesCommand) {
-        when (command) {
-
-            is CreateNotesCommand.InputContent -> {
-                _state.update { previousState ->
-                     previousState.copy(title = command.content)
-
-                }
+    init {
+        repository.getAllNotes()
+            .onEach { notes ->
+                _state.update { it.copy(notes = notes) }
             }
-
-            is CreateNotesCommand.InputTitle -> {
-                _state.update { previousState ->
-                     previousState.copy(title = command.title)
-
-                }
-            }
-        }
+            .launchIn(viewModelScope)
     }
-
-}
-
-sealed interface CreateNotesCommand {
-
-    data class InputTitle(val title: String) : CreateNotesCommand
-    data class InputContent(val content: String) : CreateNotesCommand
-
 }
 
 data class NotesScreenState(
-    val title: String = "",
-    val content: String = ""
 
-)
+    val notes: List<Note> = listOf(),
+
+    )

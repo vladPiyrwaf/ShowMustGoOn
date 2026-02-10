@@ -1,4 +1,4 @@
-package com.example.showmustgoon.ui.theme
+package com.example.showmustgoon.presentation.screens.theme
 
 import androidx.compose.ui.graphics.Color
 
